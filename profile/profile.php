@@ -61,7 +61,7 @@ if($_SESSION["userProfile"]["view"] !== 1){
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
               <div>
                 <p class="mb-2 h5">gender</p>
-                <p class="text-muted mb-0">This person's gender is #</p>
+                <p class="text-muted mb-0">This person's gender is a pickle butter</p>
               </div>
               <div class="px-3">
                 <p class="mb-2 h5">pronouns</p>
