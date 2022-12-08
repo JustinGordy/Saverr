@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,13 +22,118 @@
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/images/gang.jpeg" class="d-block w-50" alt="...">
+      <section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-4">
+
+        <div class="card" style="border-radius: 1px;">
+          <div class="card-body text-center">
+            <div class="mt-1 mb-1">
+              <img src="<?php echo   $_SESSION["userProfile"]["profileImg"]?>"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />0
+            </div>
+            <h4 class="mb-2"><?php echo   $_SESSION["userProfile"]["fName"]." ".  $_SESSION["userProfile"]["lName"]; ?></h4>
+            <p class="text-muted mb-4">occupation
+                         
+                <p><?php echo   $_SESSION["userProfile"]["bio"]?></p>
+            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+              <div>
+                <p class="mb-2 h5">gender</p>
+                <p class="text-muted mb-0">This person's gender is #</p>
+              </div>
+              <div class="px-3">
+                <p class="mb-2 h5">pronouns</p>
+                <p class="text-muted mb-0">This person's pronouns are #</p>
+              </div>
+              <div>
+                <p class="mb-2 h5">Age</p>
+                <p class="text-muted mb-0">This person is # years old</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     </div>
     <div class="carousel-item">
-      <img src="/images/world.jpeg" class="d-block w-50" alt="...">
+      <section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-4">
+
+        <div class="card" style="border-radius: 1px;">
+          <div class="card-body text-center">
+            <div class="mt-1 mb-1">
+              <img src="<?php echo   $_SESSION["userProfile"]["profileImg"]?>"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />0
+            </div>
+            <h4 class="mb-2"><?php echo   $_SESSION["userProfile"]["fName"]." ".  $_SESSION["userProfile"]["lName"]; ?></h4>
+            <p class="text-muted mb-4">occupation
+              
+                <p><?php echo   $_SESSION["userProfile"]["bio"]?></p>
+            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+              <div>
+                <p class="mb-2 h5">gender</p>
+                <p class="text-muted mb-0">This person's gender is a pickle butter</p>
+              </div>
+              <div class="px-3">
+                <p class="mb-2 h5">pronouns</p>
+                <p class="text-muted mb-0">This person's pronouns are #</p>
+              </div>
+              <div>
+                <p class="mb-2 h5">Age</p>
+                <p class="text-muted mb-0">This person is # years old</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     </div>
     <div class="carousel-item">
-      <img src="/images/tote.jpeg" class="d-block w-50" alt="...">
+      <section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-4">
+
+        <div class="card" style="border-radius: 1px;">
+          <div class="card-body text-center">
+            <div class="mt-1 mb-1">
+              <img src="<?php echo   $_SESSION["userProfile"]["profileImg"]?>"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />0
+            </div>
+            <h4 class="mb-2"><?php echo   $_SESSION["userProfile"]["fName"]." ".  $_SESSION["userProfile"]["lName"]; ?></h4>
+            <p class="text-muted mb-4">occupation
+              
+                <p><?php echo   $_SESSION["userProfile"]["bio"]?></p>
+            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+              <div>
+                <p class="mb-2 h5">gender</p>
+                <p class="text-muted mb-0">This person's gender is a pickle butter</p>
+              </div>
+              <div class="px-3">
+                <p class="mb-2 h5">pronouns</p>
+                <p class="text-muted mb-0">This person's pronouns are #</p>
+              </div>
+              <div>
+                <p class="mb-2 h5">Age</p>
+                <p class="text-muted mb-0">This person is # years old</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
