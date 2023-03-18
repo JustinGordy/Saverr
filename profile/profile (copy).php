@@ -18,10 +18,7 @@ if($_SESSION["userProfile"]["view"] !== 1){
     header("Location: login.php");
 }
 
-if (isset($_POST['like'])) {
-    include($_SERVER['DOCUMENT_ROOT'].'/profile/like.php');
-    exit();
-}
+
 
 ?>
 
@@ -50,6 +47,7 @@ if (isset($_POST['like'])) {
 
         <!-- Services-->
 
+
 <section class="vh-100" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -58,32 +56,30 @@ if (isset($_POST['like'])) {
         <div class="card" style="border-radius: 1px;">
           <div class="card-body text-center">
             <div class="mt-1 mb-1">
-              <img src=" <?php echo $_SESSION["userProfile"]["profileImg"]; ?>"
-                alt="Avatar" class="img-fluid my-5" style="width: 80px;" /> <br></div>
-
-            <h5> <?php echo   $_SESSION["userProfile"]["fName"]." ".  $_SESSION["userProfile"]["lName"]; ?> </h5>
-               <a href="/profile/like.php?liked=true">
-                <img src="https://cdn-icons-png.flaticon.com/512/966/966622.png?w=1800&t=st=1677270133~exp=1677270733~hmac=32f6c4bb23f24b3db2c87be60dce372b9d7d6438d80dd4d940e453571b971fb5" height="30px" />
-               </a>
+              <img src=" <?php echo $_SESSION["userProfile"]["profileImg"] ?>"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+            </div>
+            <h5> <?php echo $_SESSION["userProfile"]["fName"]." ".$_SESSION["userProfile"]["lName"]?></h5>
+            
             <p class="text-muted mb-4">@occupation  <span class="mx-2">|</span> 
               <?php 
               if( $_SESSION["userProfile"]["edit"] == 1){
                 echo "<a href='/profile/edit.php'>Edit profile</a>";
               }
                 ?>
-                <p> <?php echo $_SESSION["userProfile"]["bio"]; ?></p>
+                <p> <?php $_SESSION["userProfile"]["bio"]?></p>
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
               <div>
                 <p class="mb-2 h5">Gender</p>
-                <p class="text-muted"><?php echo  $_SESSION["userProfile"]["gender"]; ?></p>
+                <p class="text-muted"><?php $_SESSION["userProfile"]["gender"]?></p>
               </div>
               <div class="px-3">
                 <p class="mb-2 h5">Interest</p>
-                <p class="text-muted"> <?php echo $_SESSION["userProfile"]["interest"]; ?></p>
+                <p class="text-muted"> <?php $_SESSION["userProfile"]["interest"]?></p>
               </div>
               <div>
                 <p class="mb-2 h5">Age</p>
-                <p class="text-muted"> <?php echo $_SESSION["userProfile"]["age"]; ?></p>
+                <p class="text-muted"> <?php $_SESSION["userProfile"]["age"]?></p>
               </div>
             </div>
           </div>
@@ -98,7 +94,22 @@ if (isset($_POST['like'])) {
       
       
 
-        <?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php';?>
+       <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

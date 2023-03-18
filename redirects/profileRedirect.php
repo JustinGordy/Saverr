@@ -1,67 +1,101 @@
-<?php session_start();
-//bootstrap profile https://mdbootstrap.com/docs/standard/extended/profiles/
+<?php
+session_start();
+
 include($_SERVER['DOCUMENT_ROOT'].'/functions/dbInfo.php');
 
-//uidUsers, first, last, email.
-  $sql = "SELECT * FROM users WHERE uidUser = '".$_GET['uid']."' ";
-  $result = $conn->query($sql);
-  foreach($result as $row){
-   
-  }
+ 
+$sql = "SELECT *
+        FROM users
+        JOIN profiles ON users.uidUser = profiles.uidUser
+        WHERE users.uidUser = '".$_GET['uid']."'";
+$result = $conn->query($sql);
 
-//uses UID to get profile values 
-  $sqlProfile = "SELECT * FROM profiles WHERE uidUser = '".$_GET['uid']."' ";
-  $resultProfile = $conn->query($sqlProfile);
- foreach($resultProfile as $rowProfile){
-   
-  }
+ 
+
+
 
 $canView = 0;
 $canEdit = 0;
 
-  if($_SESSION['user']['uidUser'] != NULL){
-    $canView = 1;
-
-    if($_SESSION['user']['uidUser'] == $_GET['uid']){
-      $canEdit = 1;
-    }
-    
-  } else {
-    $_SESSION["message"]["errorLogin"] = "try again";
-     header("Location: /index.php");
+  
+if($_SESSION['user']['uidUser'] != NULL){
+  $canView = 1;
+  if($_SESSION["user"]["uidUser"] == $_GET['uid']){
+    $canEdit = 1;
   }
+}else{
+  $_SESSION["message"]["errorLogin"] = "You must be logged in to view this page. Login and try again!";
 
-// echo "Yes profile. edit it;$canEdit ";
+  header("Location: /index.php");
+
+  
+}
+// echo "Show Profile; Yes Can Edit;$canEdit;";
 
 
 
 
 
+
+
+
+// echo '<pre>';
+//   var_dump($_SESSION);
+// echo'</pre>';
 
   $_SESSION["userProfile"]["view"]= $canView;
   $_SESSION["userProfile"]["edit"]= $canEdit;
   $_SESSION["userProfile"]["fName"]= $row['fName'];
   $_SESSION["userProfile"]["lName"]= $row['lName'];
   $_SESSION["userProfile"]["email"]= $row['email'];
-  $_SESSION["userProfile"]["favx"]= $rowProfile['favx'];
+  $_SESSION["userProfile"]["age"]= $rowProfile['age'];
+  $_SESSION["userProfile"]["gender"]= $rowProfile['gender'];  
+  $_SESSION["userProfile"]["interest"]= $rowProfile['interest']; 
   $_SESSION["userProfile"]["grade"]= $rowProfile['grade'];
   $_SESSION["userProfile"]["bio"]= $rowProfile['bio'];
   $_SESSION["userProfile"]["profileImg"]= $rowProfile['profileImg'];
 
-
-    if ($rowProfile['gender'] == 0){
-      $gender = 'Male';
-    } elseif ($rowProfile['gender'] == 1){
-      $gender = 'Female';
-    }else {
-      $gender = 'Nonbinary';
+if($rowProfile['gender']==0){
+  $gender="Male";
+}elseif($rowProfile['gender']==1){
+   $gender="Female";
+}else{
+  $gender="Nonbinary";
 }
-$_SESSION["userProfile"]["gender"] = $gender;
 
 
-header("Location: /profile/profile.php");
-  // echo '<pre>';
-  // var_dump($rowProfile);
-  // echo '</pre>';
+
+if($rowProfile['age'] == 0){
+  $age="14";
+}elseif($rowProfile['age'] == 1){
+   $age="15";
+}elseif($rowProfile['age'] == 2){
+  $age="16";
+}elseif($rowProfile['age'] == 3){
+  $age="17";
+}else{
+  $age="18";
+}
+ $_SESSION["userProfile"]["age"]=$age;
+
+
+if (isset($_POST['submit'])) {
+  if (isset($_POST['interests'])) {
+    $interests = $_POST['interests'];
+    $interestsStr = implode(',', $interests); // convert the array to comma-separated string
+
+    $_SESSION["userProfile"]["interest"] = $interestsStr;
+  }
+}
+
+// Code for displaying the selected interests in the form
+$interestsArr = explode(',', $_SESSION["userProfile"]["interest"]); // convert the string to an array
+$interestsSet = array_flip($interestsArr); // convert the array to a set for faster lookup
+
+
+  header("Location: /profile/profile.php?uid=".$_SESSION["user"]["uidUser"]."");
+
+
+
 
 ?>

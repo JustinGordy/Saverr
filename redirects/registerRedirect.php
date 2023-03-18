@@ -5,10 +5,7 @@ session_start();
       header("Location: /register.php");
   }
 
-if(strlen($_POST['username']) <= 5 ||preg_match('/\d/',  $_POST['username'])==0){
-    $_SESSION["message"]["errorLogin"] = "Username needs to be at least 5 characters long and contain a number"; 
-      header("Location: /register.php");
-  }
+
 // strlen($_POST['username']);
 
 
@@ -65,10 +62,10 @@ $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     // use exec() because no results are returned
     $conn->exec($sql);
      $_SESSION["message"]["errorLogin"] = "Congrats, you now have an account! Please verify your email address in the email sent to your account."; 
-    header("Location: /loginRegister/login.php");
+    header("Location: /login.php");
   } catch(PDOException $e) {
          $_SESSION["message"]["errorLogin"] = "Password, username and/or email already exsist". $sql . "<br>" . $e->getMessage();
-     header("Location: /loginRegister/login.php");
+     header("Location: /login.php");
   }
   $conn = null;
 

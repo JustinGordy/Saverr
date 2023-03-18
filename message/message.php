@@ -344,7 +344,7 @@ body{
                             </a>
                             <div class="chat-about">
                                 <h6 class="m-b-0">Aiden Chavez</h6>
-                                <small>Last seen: 2 hours ago</small>
+                                <small>Last seen: 539w ago</small>
                             </div>
                         </div>
                         <div class="col-lg-6 hidden-sm text-right">

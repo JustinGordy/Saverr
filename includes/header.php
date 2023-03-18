@@ -1,22 +1,48 @@
+<?php 
+session_start();
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                Logo
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home.php">Home</a></li>
-                      <li class="nav-item"><a class="nav-link active" aria-current="page" href="/profile/profile.php">Profile</a></li>
-                      <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users.php">Users</a></li>
+include($_SERVER['DOCUMENT_ROOT'].'/functions/dbInfo.php');
 
+  if(isset($_SESSION['uidUser'])) {
+    // Change login button to logout
+  echo '<a href="logout.php">Log Out</a>';
 
+}
 
+  // Logout script
+  if(isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: login.php");
+}
+if (isset($_POST['unset_session'])) { // check if unset_session button was clicked
+    session_unset(); // unset all session variables
+    session_destroy(); // destroy the session
+                                     exit(); // stop script execution after redirect
+}
 
-                       
+echo'
+
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/home.php?uid='.$_SESSION["user"]["uidUser"].'">Home</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="/profile/profile.php?uid='.$_SESSION["user"]["uidUser"].'">Profile</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="/users.php?uid='.$_SESSION["user"]["uidUser"].'">Users</a></li> 
+                        <li class="nav-item"><a class="nav-link" name="unset_session" value="Unset Session" href="/index.php">Logout</a></li>
                     </ul>
-                    <form action="/index.php" class="inline">
-                        <button class="float-left submit-button" >Log Out</button>
-                    </form>       
                 </div>
             </div>
         </nav>
+
+
+
+
+'
+
+
+?>
